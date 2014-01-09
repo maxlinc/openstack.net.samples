@@ -10,11 +10,16 @@ namespace openstack.net.samples
     {
         static void Main(string[] args)
         {
+            if (args.Length != 2)
+            {
+                System.Console.WriteLine("Usage: openstack.net.samples.exe <username> <api_key>");
+                return 1;
+            }
 
             try
             {
-                var apikey = Properties.Settings.Default.apikey;
-                var userid = Properties.Settings.Default.userid;
+                var userid = args[0];
+                var apikey = args[1];
 
                 Samples.openstack.net.openstack.Authenticate(userid, apikey);
                 Samples.openstack.net.openstack.RunAll(userid, apikey);
