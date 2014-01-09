@@ -8,12 +8,14 @@ namespace openstack.net.samples
 {
     class Program
     {
+        private const int ERROR_BAD_ARGUMENTS = 0xA0;
+
         static void Main(string[] args)
         {
             if (args.Length != 2)
             {
                 System.Console.WriteLine("Usage: openstack.net.samples.exe <username> <api_key>");
-                return 1;
+                Environment.Exit(ERROR_BAD_ARGUMENTS);
             }
 
             try
